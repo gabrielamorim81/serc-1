@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+  --body-color: #E4E9F7;
+  --sidebar-color: rgba(0, 0, 0, 0.94);
+  --primary-color: rgb(255, 255, 255);
+  --primary-color-light: rgba(12, 12, 12, 0.28);
+  --toggle-color: rgb(255, 255, 255);
+  --text-color: rgb(255, 255, 255);
+
+  --tran-02: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.4s ease;
+  --tran-05: all 0.5s ease;
+}
+
+body.dark{
+  --body-color: #18191A;
+  --sidebar-color: rgb(8, 25, 81);
+  --primary-color: rgb(255, 255, 100);
+  --primary-color-light: #3A3B3;
+  --toggle-color: rgb(255, 255, 255);
+  --text-color: rgb(255, 255, 255);
+}

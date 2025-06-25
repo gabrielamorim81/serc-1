@@ -1,0 +1,27 @@
+import { Component } from '@angular/core';
+import { NgClass } from '@angular/common';
+import {RouterLink} from '@angular/router';
+@Component({
+  selector: 'app-sidebar',
+  imports: [NgClass, RouterLink],
+  templateUrl: './sidebar.html',
+  styleUrl: './sidebar.css'
+})
+export class Sidebar {
+  isDarkMode = false;
+  isSidebarClosed = false;
+
+  toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode;
+
+    if (this.isDarkMode) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+  }
+
+  toggleSidebar() {
+    this.isSidebarClosed = !this.isSidebarClosed;
+  }
+}
