@@ -24,4 +24,6 @@ export class Sidebar {
   toggleSidebar() {
     this.isSidebarClosed = !this.isSidebarClosed;
   }
+
+
 }

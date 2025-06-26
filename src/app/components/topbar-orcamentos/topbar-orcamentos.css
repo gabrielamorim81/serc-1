@@ -3,8 +3,8 @@ i.bx {
   left: 1755px;
   position: relative;
   top: 40px;
+  color: #E4E9F7;
   z-index: 3;
-  color: var(--text-color);
 }
 
 .topbar {
@@ -16,7 +16,8 @@ i.bx {
   left: 0px;
   height: 120px;
   width: 100%;
-  z-index: 2;
+  z-index: 1;
   background: var(--sidebar-color);
 }
+
 

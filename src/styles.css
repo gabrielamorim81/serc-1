@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 :root{
   --body-color: #E4E9F7;
-  --sidebar-color: rgba(0, 0, 0, 0.94);
+  --sidebar-color: rgb(0, 0, 0);
   --primary-color: rgb(255, 255, 255);
-  --primary-color-light: rgba(12, 12, 12, 0.28);
+  --primary-color-light: rgba(0, 0, 0, 0.76);
   --toggle-color: rgb(255, 255, 255);
   --text-color: rgb(255, 255, 255);
 
@@ -14,8 +14,8 @@
 }
 
 body.dark{
-  --body-color: #18191A;
-  --sidebar-color: rgb(8, 25, 81);
+  --body-color: rgb(0, 0, 0);
+  --sidebar-color: rgb(13, 43, 145);
   --primary-color: rgb(255, 255, 100);
   --primary-color-light: #3A3B3;
   --toggle-color: rgb(255, 255, 255);

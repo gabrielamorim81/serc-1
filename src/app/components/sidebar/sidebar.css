@@ -261,7 +261,7 @@ body.dark .menu-bar .mode i.moon{
 }
 
 .bottom-content {
-  margin-top: 200px;
+  margin-top: 315px;
 }
 
 .sidebar li a:hover .route{
@@ -271,3 +271,4 @@ body.dark .menu-bar .mode i.moon{
 .sidebar li a .route{
   color: var(--text-color);
 }
+

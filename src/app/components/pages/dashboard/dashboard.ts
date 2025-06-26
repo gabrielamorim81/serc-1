@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { NgClass } from '@angular/common';
 import {Sidebar} from '../../sidebar/sidebar';
+import {TopbarListacomp} from '../../topbar-listacomp/topbar-listacomp';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [NgClass, Sidebar],
+  imports: [NgClass, Sidebar, TopbarListacomp],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css'
 })
