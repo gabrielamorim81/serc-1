@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgClass } from '@angular/common';
 import {RouterLink} from '@angular/router';
+import {AuthService} from '../../services/auth.service';
 @Component({
   selector: 'app-sidebar',
   imports: [NgClass, RouterLink],
@@ -10,6 +11,10 @@ import {RouterLink} from '@angular/router';
 export class Sidebar {
   isDarkMode = false;
   isSidebarClosed = false;
+  constructor (private Authservice: AuthService) {}
+  logout(){
+    this.Authservice.logout();
+  }
 
   toggleDarkMode() {
     this.isDarkMode = !this.isDarkMode;
@@ -23,6 +28,9 @@ export class Sidebar {
 
   toggleSidebar() {
     this.isSidebarClosed = !this.isSidebarClosed;
+
+
+
   }
 
 
