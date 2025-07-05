@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { NgClass } from '@angular/common';
 import {RouterLink} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
@@ -8,14 +8,24 @@ import {AuthService} from '../../services/auth.service';
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css'
 })
-export class Sidebar {
+export class Sidebar implements OnInit{
   isDarkMode = false;
   isSidebarClosed = false;
   constructor (private Authservice: AuthService) {}
+  ngOnInit():void{
+    this.checkMedia();
+    window.addEventListener('resize', () => this.checkMedia());
+    this.isDarkMode = true
+    document.body.classList.add('dark')
+  }
   logout(){
     this.Authservice.logout();
   }
-
+  checkMedia(){
+    if (window.matchMedia("(max-width: 768px)").matches){
+      this.isSidebarClosed= true;
+    }
+  }
   toggleDarkMode() {
     this.isDarkMode = !this.isDarkMode;
 
@@ -27,11 +37,8 @@ export class Sidebar {
   }
 
   toggleSidebar() {
-    this.isSidebarClosed = !this.isSidebarClosed;
-
-
+    this.isSidebarClosed= !this.isSidebarClosed;
 
   }
-
 
 }

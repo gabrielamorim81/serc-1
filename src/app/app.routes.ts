@@ -2,13 +2,14 @@ import { Routes } from '@angular/router';
 import {Dashboard} from './components/pages/dashboard/dashboard';
 import {authGuard} from './services/authguard';
 import {Loginpage} from './components/pages/loginpage/loginpage';
+import {Detalhesorcamento} from './components/pages/detalhesorcamento/detalhesorcamento';
+import {Orcamentos} from './components/pages/orcamentos/orcamentos';
 import {Composicoes} from './components/pages/composicoes/composicoes';
-import {TopbarOrcamentos} from './components/topbar-orcamentos/topbar-orcamentos';
 import {Insumos} from './components/pages/insumos/insumos';
-import {CreateInsumo} from './components/pages/create-insumo/create-insumo';
-import {Createcomp} from './components/pages/createcomp/createcomp';
-import {Searchcompo} from './components/pages/searchcompo/searchcompo';
-import {Searchinsumos} from './components/pages/searchinsumos/searchinsumos';
+import {CreateInsumos} from './components/pages/create-insumos/create-insumos';
+import {CreateComp} from './components/pages/create-comp/create-comp';
+import {Detalhescomposicao} from './components/pages/detalhescomposicao/detalhescomposicao';
+import {EventogramaComponent} from './components/pages/eventograma/eventograma';
 
 export const routes: Routes = [
   {
@@ -17,9 +18,44 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: 'orcamentos',
+    component: Orcamentos,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'detalhes-orcamento/:id',
+    component: Detalhesorcamento,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'eventograma/:id',
+    component: EventogramaComponent,
+    canActivate: [authGuard]
+  },
+  {
     path: 'composicoes',
     component: Composicoes,
     canActivate: [authGuard]
+  },
+  {
+    path: 'detalhes-composicao/:codigo',
+    component: Detalhescomposicao,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'insumos',
+    component: Insumos,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'create-insumos',
+    component: CreateInsumos,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'create-comp',
+    component: CreateComp,
+    canActivate: [authGuard],
   },
   {
     path: 'login',
@@ -30,40 +66,4 @@ export const routes: Routes = [
     redirectTo: '/login',
     pathMatch: 'full'
   },
-
-  {
-    path: 'insumos',
-    component: Insumos,
-    canActivate: [authGuard]
-  },
-{
-    path: 'create-insumo',
-    component: CreateInsumo,
-    canActivate: [authGuard]
-  },
-
-  { path: 'orcamento',
-    component: TopbarOrcamentos,
-    canActivate: [authGuard]
-  },
-
-  { path: 'create-comp',
-    component: Createcomp,
-    canActivate: [authGuard]
-  },
-
-
-  { path: 'searchcomp',
-    component: Searchcompo,
-    canActivate: [authGuard]
-  },
-
-
-  { path: 'searchinsumos',
-    component: Searchinsumos,
-    canActivate: [authGuard]
-  },
-
-
 ];
-

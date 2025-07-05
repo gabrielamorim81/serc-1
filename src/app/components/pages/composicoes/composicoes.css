@@ -1,0 +1,119 @@
+/* 🔍 Estilo do formulário de busca */
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 70px;                       /* Espaço entre campos */
+  background-color: var(--sidebar-color); /* Acompanha cor da sidebar */
+  padding: 30px;
+  border-radius: 10px;
+  margin: 130px auto 30px auto;        /* Centralizado abaixo do topo */
+  max-width: 1000px;
+  justify-content: center;
+  color: white;
+}
+
+
+.search-form label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+
+.search-form select,
+.search-form input[type="text"],
+.search-form input[type="month"] {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  min-width: 180px;
+}
+
+/* 🔘 Botão de busca */
+.search-form button {
+  padding: 10px 18px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-form button:hover {
+  background-color: #0056b3;
+}
+
+/* 📊 Tabela de resultados */
+table {
+  width: calc(100% - 280px);            /* Considera a sidebar lateral */
+  margin-left: 280px;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: var(--sidebar-color);
+  color: white;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  font-size: 14px;
+}
+
+/* 🧾 Linhas com zebra + hover */
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #e8f0ff;
+  cursor: pointer;
+}
+
+/* 📱 Responsividade */
+@media (max-width: 768px) {
+  .search-form {
+    flex-direction: column;
+    align-items: stretch;
+    margin: 100px 20px 30px 20px;
+  }
+
+  table {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    display: block;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    background: #fff;
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  td::before {
+    content: attr(data-label); /* Usa o rótulo no mobile */
+    font-weight: bold;
+    flex-basis: 50%;
+  }
+}
+
+

@@ -1,0 +1,76 @@
+/* Estilo geral do formulário */
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 70px;
+  background-color: var(--sidebar-color);
+  padding: 30px;
+  color: white;
+  border-radius: 10px;
+  align-items: revert;
+  margin: 0 auto 50px auto; /* Centraliza e move para baixo */
+  max-width: 1000px;            /* Limita a largura para centralizar melhor */
+  justify-content: center;     /* Centraliza os campos internamente */
+  position: relative;
+  top: 140px;
+}
+
+.search-form label {
+  font-weight: bold;                 /* Deixa o texto do label em negrito */
+  margin-right: 5px;                 /* Pequeno espaço à direita do label */
+}
+
+.search-form select,
+.search-form input[type="text"],
+.search-form input[type="month"] {
+  padding: 6px 10px;                 /* Espaçamento interno */
+  border: 1px solid rgba(12, 12, 12, 0.28);            /* Borda cinza clara */
+  border-radius: 6px;                /* Cantos arredondados */
+  min-width: 180px;                  /* Largura mínima para não ficarem pequenos demais */
+}
+
+.search-form button {
+  padding: 8px 16px;                 /* Espaçamento interno */
+  background-color: #007bff;         /* Azul padrão */
+  border: none;                      /* Sem borda */
+  color: #f0f2f8;                      /* Texto branco */
+  border-radius: 6px;                /* Cantos arredondados */
+  cursor: pointer;                   /* Muda o cursor ao passar o mouse */
+}
+
+
+table {
+  margin: 200px;
+  margin-left: 285px; /* desloca a tabela para a direita */
+  width: auto /* evita que ultrapasse a largura da tela */
+}
+
+thead {
+  background-color: var(--sidebar-color);         /* Cabeçalho com fundo azul */
+  color: rgb(240, 242, 248);                      /* Texto branco */
+}
+
+th, td {
+  padding: 10px;                     /* Espaçamento interno nas células */
+  border: 1px solid #ddd;            /* Bordas cinza claro */
+  text-align: left;                  /* Alinha o conteúdo à esquerda */
+}
+
+
+body, html {
+  margin: -20px 0;
+  padding: 0;
+  background-color: var(--body); /* cor de fundo no modo escuro */
+  box-sizing: border-box;
+  min-height: 100vh;
+  width: 100%;
+  height: 100%;
+  min-width: 100vw;
+}
+
+
+.itens{
+  color: var(--body-color);
+  font-weight: bold;
+}
+

@@ -1,0 +1,68 @@
+
+<div class="topbar">
+  <a [routerLink]="['/eventograma', orcamentoId]" >
+    <i class='bx bx-show'></i>
+  </a>
+  <a (click)="abrirModal()">
+    <i class='bx bx-wrench'></i>
+  </a>
+  <a (click)="abrirModalBanco()">
+    <i class='bx bx-edit'></i>
+  </a>
+</div>
+
+<div class="modal-overlay" *ngIf="modalAberto" (click)="fecharModal()">
+  <div class="modal-container" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+    </div>
+    <div class="modal-actions">
+      <button class="modal-btn">Importar Orçamento</button>
+      <button class="modal-btn">Exportar para o Transfere Gov</button>
+    </div>
+  </div>
+</div>
+
+<!-- Botão para abrir o segundo modal -->
+<button (click)="abrirModalBanco()">Adicionar Banco</button>
+
+<!-- Segundo Modal -->
+<div class="modal-overlay" *ngIf="modalBancoAberto" (click)="fecharModalBanco()">
+  <div class="modal-container" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>Encargos e Banco</h2>
+    </div>
+
+    <div class="modal-body">
+      <label>Nome:</label>
+      <input type="text" [(ngModel)]="nome" />
+
+      <label>Encargos Sociais:</label>
+      <div>
+        <input type="radio" name="encargos" value="desonerado" [(ngModel)]="encargos" /> Desonerado
+        <input type="radio" name="encargos" value="nao-desonerado" [(ngModel)]="encargos" /> Não desonerado
+      </div>
+
+      <label>BDI:</label>
+      <input type="text" [(ngModel)]="bdi" />
+
+      <label>Selecione os bancos e períodos:</label>
+      <div class="banco-periodo">
+        <input type="text" placeholder="Nome do banco" [(ngModel)]="nomeBanco" />
+        <input type="text" placeholder="Período" [(ngModel)]="periodoBanco" />
+        <button (click)="adicionarBanco()">Adicionar Banco</button>
+      </div>
+
+      <div class="bancos-listados">
+        <div *ngFor="let banco of bancos; let i = index" class="banco-item">
+          <span>{{ banco.nome }} - {{ banco.periodo }}</span>
+          <button class="remover-btn" (click)="removerBanco(i)">Remover</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button (click)="salvar()">Salvar</button>
+      <button (click)="fecharModalBanco()">Cancelar</button>
+    </div>
+  </div>
+</div>
