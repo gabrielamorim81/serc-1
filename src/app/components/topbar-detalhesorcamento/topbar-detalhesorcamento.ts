@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, RouterLink} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {Detalhesorcamento} from '../pages/detalhesorcamento/detalhesorcamento';
 
 
 @Component({
@@ -24,16 +25,22 @@ modalAberto = false;
   periodoBanco = '';
   bancos: { nome: string; periodo: string }[] = [];
   modalBancoAberto = false;
+isOrcamento: boolean= false;
 
 
-constructor(private route: ActivatedRoute) {
+constructor(private route: ActivatedRoute, private router: Router) {
 }
 
 ngOnInit() {
   this.route.paramMap.subscribe(params =>{
     this.orcamentoId = params.get('id')!;
+
   });
-  console.log(this.orcamentoId);
+  const url =this.router.url;
+  if (url.startsWith('/eventograma')){
+    this.isOrcamento= true;
+  }
+
 }
 
   abrirModal() {

@@ -18,8 +18,6 @@ import {Router} from '@angular/router';
   templateUrl: './composicoes.html',
   styleUrl: './composicoes.css'
 })
-
-
 export class Composicoes {
   query = '';
   searchBy = 'codigo';
@@ -53,7 +51,6 @@ export class Composicoes {
     }
   }
 
-
   private processarResultado(data: any[]) {
     const resultadoFinal: any[] = [];
 
@@ -72,6 +69,7 @@ export class Composicoes {
 
       precosFiltrados.forEach((cotacao: any) => {
         resultadoFinal.push({
+          id: composicao.id,
           base: this.tipo,
           data: this.formatarData(cotacao.dataCotacao),
           codigo: composicao.codigo,
@@ -110,9 +108,8 @@ export class Composicoes {
     return `${ano}/${mes}`;
   }
 
-  abrirDetalhes(codigo: string) {
-    this.router.navigate(['/detalhes-composicao', codigo]);
+  abrirDetalhes(id: string) {
+    console.log(id);
+    this.router.navigate(['/detalhes-composicao', id]);
   }
 }
-
-

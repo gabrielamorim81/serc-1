@@ -9,11 +9,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 import {TopbarDetalhesorcamento} from '../../topbar-detalhesorcamento/topbar-detalhesorcamento';
 import {Observable} from 'rxjs';
 import {Sidebar} from '../../sidebar/sidebar';
+import {TopbarListacomp} from '../../topbar-listacomp/topbar-listacomp';
 
 
 @Component({
   selector: 'app-detalhesorcamento',
-  imports: [CommonModule, FormsModule, TopbarDetalhesorcamento, Sidebar],
+  imports: [CommonModule, FormsModule, TopbarDetalhesorcamento, Sidebar, TopbarListacomp],
   templateUrl:'./detalhesorcamento.html',
   styleUrl: './detalhesorcamento.css'
 })

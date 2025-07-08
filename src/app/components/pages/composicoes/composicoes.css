@@ -1,79 +1,106 @@
-/* 🔍 Estilo do formulário de busca */
+/* 🌐 Container central para tudo */
+.central-wrapper {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+/* 🔍 Formulário de busca */
 .search-form {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px 70px;                       /* Espaço entre campos */
-  background-color: var(--sidebar-color); /* Acompanha cor da sidebar */
-  padding: 30px;
-  border-radius: 10px;
-  margin: 130px auto 30px auto;        /* Centralizado abaixo do topo */
-  max-width: 1000px;
+  margin-top: 150px;
+  gap: 1rem;
+  background-color: var(--sidebar-color);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   justify-content: center;
-  color: white;
+  align-items: flex-end;
+  margin-bottom: 2rem;
 }
 
-
+/* 🏷️ Rótulos */
 .search-form label {
-  font-weight: bold;
-  margin-right: 5px;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-right: 0.5rem;
 }
 
-
-.search-form select,
-.search-form input[type="text"],
-.search-form input[type="month"] {
-  padding: 8px 12px;
+/* 🧾 Inputs e selects */
+.search-form input,
+.search-form select {
+  padding: 0.6rem 0.75rem;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 8px;
+  font-size: 1rem;
   min-width: 180px;
+  transition: border-color 0.3s ease;
 }
 
-/* 🔘 Botão de busca */
+/* ✨ Efeito ao focar no campo */
+.search-form input:focus,
+.search-form select:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+/* 🔘 Botão de buscar */
 .search-form button {
-  padding: 10px 18px;
-  background-color: #007bff;
-  border: none;
+  background-color: #4a90e2;
   color: white;
-  border-radius: 6px;
+  border: none;
+  padding: 0.65rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.3s ease;
 }
 
 .search-form button:hover {
-  background-color: #0056b3;
+  background-color: #3a78c2;
 }
 
-/* 📊 Tabela de resultados */
+/* 📋 Tabela de resultados */
 table {
-  width: calc(100% - 280px);            /* Considera a sidebar lateral */
-  margin-left: 280px;
+  margin-left: 300px;
+  width: 80%;
   border-collapse: collapse;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
   background-color: white;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
+/* 🔠 Cabeçalho da tabela */
 thead {
   background-color: var(--sidebar-color);
-  color: white;
 }
 
-th, td {
-  padding: 12px;
-  border-bottom: 1px solid #ddd;
+thead th {
+  padding: 1rem;
   text-align: left;
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-color);
 }
 
-/* 🧾 Linhas com zebra + hover */
-tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
+/* 📄 Linhas da tabela */
+tbody tr {
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
 }
 
 tbody tr:hover {
-  background-color: #e8f0ff;
-  cursor: pointer;
+  background-color: #f9f9f9;
+}
+
+tbody td {
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  color: #333;
 }
 
 /* 📱 Responsividade */
@@ -81,39 +108,40 @@ tbody tr:hover {
   .search-form {
     flex-direction: column;
     align-items: stretch;
-    margin: 100px 20px 30px 20px;
+  }
+
+  .search-form input,
+  .search-form select,
+  .search-form button {
+    width: 100%;
   }
 
   table {
-    width: 100%;
-    margin: 0 auto;
+    font-size: 0.9rem;
   }
 
   thead {
     display: none;
   }
 
-  tr {
+  tbody td {
     display: block;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+  }
+
+  tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid #e0e0e0;
     border-radius: 8px;
-    padding: 10px;
-    background: #fff;
   }
 
-  td {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 10px;
-    font-size: 14px;
-  }
-
-  td::before {
-    content: attr(data-label); /* Usa o rótulo no mobile */
+  tbody td::before {
+    content: attr(data-label);
     font-weight: bold;
-    flex-basis: 50%;
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #666;
   }
 }
-
-

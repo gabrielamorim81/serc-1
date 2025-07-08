@@ -1,16 +1,14 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import { ComposicoesService } from '../../../services/composicoes';
+import { ComposicoesService} from '../../../../services/composicoes';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../../services/auth.service';
+import {AuthService} from '../../../../services/auth.service';
 import {Router} from '@angular/router';
-import {TopbarListacomp} from '../../topbar-listacomp/topbar-listacomp';
-import {Sidebar} from '../../sidebar/sidebar';
 
 @Component({
   selector: 'app-create-comp',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, TopbarListacomp, Sidebar],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './create-comp.html',
   styleUrls: ['./create-comp.css']
 })

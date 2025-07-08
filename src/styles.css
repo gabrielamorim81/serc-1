@@ -2,9 +2,9 @@
 :root{
   --body: #111111;
   --body-color: #E4E9F7;
-  --sidebar-color: rgb(0, 0, 0);
+  --sidebar-color: #121826;
   --primary-color: rgb(255, 255, 255);
-  --primary-color-light: rgba(0, 0, 0, 0.76);
+  --primary-color-light: #121826;
   --toggle-color: rgb(255, 255, 255);
   --text-color: rgb(255, 255, 255);
 

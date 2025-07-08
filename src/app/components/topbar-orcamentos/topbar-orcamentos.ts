@@ -86,12 +86,8 @@ export class TopbarOrcamentos implements OnInit{
     };
 
 
-    this.svc.adicionarOrcamento(orcamento)
-      .subscribe({
-        next:()=>{
-          this.orcamentoForm.reset();
-   },
-      });
+
+
   }
 
 }

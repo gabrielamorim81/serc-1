@@ -3,7 +3,6 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { environment } from '../../environments/environment';
 import { tap } from 'rxjs/operators';
-import {OrcamentoDetalhes} from './detalhesorcamento';
 
 
 @Injectable({
@@ -35,15 +34,15 @@ export class OrcamentosService {
   }
 
   deletarOrcamento(orcamentoId: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/orcamentos/${orcamentoId}`);
+    return this.http.delete(`${this.apiUrl}/orcamentos?id=${orcamentoId}`);
   }
+
 
   deletarPasta(pastaId: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/pastas/${pastaId}`);
   }
 
-  adicionarOrcamento(orcamento:{nome: string, bdi: number, encargo: string, bancos: string}):Observable<any>{
-    return this.http.post<OrcamentoDetalhes>(`${this.apiUrl}/orcamentos`,orcamento)
+  adicionarOrcamento(orcamento: {nome: any; bdi: any; encargo: any; bancos: string}) {
 
   }
 }

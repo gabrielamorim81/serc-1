@@ -1,9 +1,7 @@
-
 <app-topbar-listacomp></app-topbar-listacomp>
 <app-sidebar></app-sidebar>
 
 
-<body>
 <div class="search-form">
   <label>Pesquisar por:</label>
   <select [(ngModel)]="searchBy">
@@ -39,17 +37,17 @@
     <th>Valor Desonerado</th>
   </tr>
   </thead>
-  <tbody class="itens">
-    <tr *ngFor="let item of resultados">
-      <td>{{ item.base }}</td>
-      <td>{{ formatarData(item.data) }}</td>
-      <td>{{ item.codigo }}</td>
-      <td>{{ item.descricao }}</td>
-      <td>{{ item.tipo }}</td>
-      <td>{{ item.unidade }}</td>
-      <td>{{ item.valorOnerado }}</td>
-      <td>{{ item.valorDesonerado }}</td>
-    </tr>
+  <tbody>
+  <tr *ngFor="let item of resultados">
+    <td>{{ item.base }}</td>
+    <td>{{ formatarData(item.data) }}</td>
+    <td>{{ item.codigo }}</td>
+    <td>{{ item.descricao }}</td>
+    <td>{{ item.tipo }}</td>
+    <td>{{ item.unidade }}</td>
+    <td>{{ item.valorOnerado }}</td>
+    <td>{{ item.valorDesonerado }}</td>
+  </tr>
   </tbody>
 </table>
-</body>
+

@@ -5,12 +5,13 @@ import {DetalhesorcamentoService, ItemOrcamento, OrcamentoDetalhes} from '../../
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CurrencyPipe, NgForOf, NgIf} from '@angular/common';
 import {Sidebar} from '../../sidebar/sidebar';
+import {TopbarOrcamentos} from '../../topbar-orcamentos/topbar-orcamentos';
 import {TopbarDetalhesorcamento} from '../../topbar-detalhesorcamento/topbar-detalhesorcamento';
 
 @Component({
   selector: 'app-eventograma',
   templateUrl: './eventograma.html',
-  imports: [FormsModule, ReactiveFormsModule, CurrencyPipe, NgForOf, NgIf, Sidebar, TopbarDetalhesorcamento],
+  imports: [FormsModule, ReactiveFormsModule, CurrencyPipe, NgForOf, NgIf, Sidebar, TopbarOrcamentos, TopbarDetalhesorcamento],
   styleUrls: ['./eventograma.css']
 })
 export class EventogramaComponent implements OnInit {

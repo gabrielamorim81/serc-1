@@ -1,9 +1,8 @@
 <app-sidebar></app-sidebar>
 <app-topbar-detalhesorcamento></app-topbar-detalhesorcamento>
 
-<body>
 <h2>Eventos</h2>
-<div>
+<div class="frente">
   <input type="text" placeholder="Nome do evento" [formControl]="nomeEvento">
   <input type="text" placeholder="Número do evento" [formControl]="numeroEvento">
   <button *ngIf="!editEventoId" (click)="adicionarEvento()">Adicionar Evento</button>
@@ -22,8 +21,9 @@
   </tr>
 </table>
 
+
 <h2>Frentes de Obra</h2>
-<div>
+<div class="frente">
   <input type="text" placeholder="Nome da frente" [formControl]="nomeFrente">
   <button *ngIf="!editFrenteId" (click)="adicionarFrente()">Adicionar Frente</button>
   <button *ngIf="editFrenteId" (click)="salvarEdicaoFrente()">Salvar Alteração</button>
@@ -41,12 +41,13 @@
 </table>
 
 <h2>Itens do Orçamento</h2>
-<table border="1" cellspacing="0" cellpadding="5" style="width: 80%;">
+<table border="1" cellspacing="0" cellpadding="7" style="width:60%;">
   <thead>
   <tr>
     <th>Evento</th>
     <th>Nível</th>
     <th>Código</th>
+    <th>Tipo</th>
     <th>Descrição</th>
     <th>UND</th>
     <th>Quantidade</th>
@@ -67,6 +68,7 @@
 
     <td>{{ item.nivel }}</td>
     <td>{{ item.codigo || '-' }}</td>
+    <td>{{ item.tipo }}</td>
     <td>{{ item.descricao }}</td>
     <td>{{ item.unidade }}</td>
     <td>{{ item.quantidade }}</td>
@@ -86,4 +88,3 @@
   </tr>
   </tbody>
 </table>
-</body>

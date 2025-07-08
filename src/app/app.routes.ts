@@ -8,8 +8,8 @@ import {Composicoes} from './components/pages/composicoes/composicoes';
 import {Insumos} from './components/pages/insumos/insumos';
 import {CreateInsumos} from './components/pages/create-insumos/create-insumos';
 import {CreateComp} from './components/pages/create-comp/create-comp';
-import {Detalhescomposicao} from './components/pages/detalhescomposicao/detalhescomposicao';
 import {EventogramaComponent} from './components/pages/eventograma/eventograma';
+import {Detalhescomposicao} from './components/pages/detalhescomposicao/detalhescomposicao';
 
 export const routes: Routes = [
   {
@@ -38,7 +38,7 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
-    path: 'detalhes-composicao/:codigo',
+    path: 'detalhes-composicao/:id',
     component: Detalhescomposicao,
     canActivate: [authGuard]
   },

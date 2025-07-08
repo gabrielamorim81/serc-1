@@ -1,5 +1,8 @@
 
 <div class="topbar">
+  <a *ngIf= "isOrcamento" [routerLink]="['/detalhes-orcamento', orcamentoId]">
+    <i class='bx bx-dollar'></i>
+  </a>
   <a [routerLink]="['/eventograma', orcamentoId]" >
     <i class='bx bx-show'></i>
   </a>
