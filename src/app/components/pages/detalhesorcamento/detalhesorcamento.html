@@ -73,9 +73,8 @@
     </td>
   </tr>
 
-  <!-- Linhas dos itens existentes -->
-  <tr *ngFor="let i of orcamento.itens" (click)="onSelectItem(i)" class="linha-item">
-    <td>{{ i.nivel }}</td><td>{{ i.codigo }}</td><td>{{ i.tipo }}</td><td>{{ i.descricao }}</td>
+  <tr *ngFor="let i of itensOrdenados" (click)="onSelectItem(i)" class="linha-item">
+  <td>{{ i.nivel }}</td><td>{{ i.codigo }}</td><td>{{ i.tipo }}</td><td>{{ i.descricao }}</td>
     <td>{{ i.unidade }}</td><td>{{ i.quantidade }}</td>
     <td>{{ i.precoUnitario | currency }}</td><td>{{ i.valorComBdi | currency }}</td>
     <td>{{ i.total | currency }}</td>

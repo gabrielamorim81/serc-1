@@ -5,7 +5,6 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {Composicao, ComposicoesService} from '../../../services/composicoes';
 import {Insumo, InsumosService} from '../../../services/insumos';
-import { HttpErrorResponse } from '@angular/common/http';
 import {TopbarDetalhesorcamento} from '../../topbar-detalhesorcamento/topbar-detalhesorcamento';
 import {Observable} from 'rxjs';
 import {Sidebar} from '../../sidebar/sidebar';
@@ -25,7 +24,6 @@ export class Detalhesorcamento implements OnInit{
 
 
   editandoItem: any;
-
 
 
   constructor(
@@ -64,6 +62,15 @@ export class Detalhesorcamento implements OnInit{
     const periodoFormatado = this.formatarPeriodo(banco.periodo.trim());
     return `${nome} ${periodoFormatado}`;
   }
+
+
+  get itensOrdenados() {
+    if (!this.orcamento || !this.orcamento.itens) return [];
+    return this.orcamento.itens.slice().sort((a, b) => {
+      return (Number(a.nivel) || 0) - (Number(b.nivel) || 0);
+    });
+  }
+
 
   iniciarAdicionarEtapa() {
     // Pega os níveis que são somente raiz (sem ponto)
@@ -293,7 +300,6 @@ export class Detalhesorcamento implements OnInit{
 
     return o;
   }
-
 
   confirmarNovaEtapa() {
     if (!this.novaEtapa) return;

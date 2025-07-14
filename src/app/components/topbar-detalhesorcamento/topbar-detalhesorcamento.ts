@@ -18,6 +18,9 @@ import {Detalhesorcamento} from '../pages/detalhesorcamento/detalhesorcamento';
 export class TopbarDetalhesorcamento implements OnInit{
 orcamentoId!: string;
 modalAberto = false;
+  anoProposta: number | null = null;
+  numeroMeta: string = '';
+  numeroSubmeta: string = '';
   nome = '';
   encargos = '';
   bdi = '';
@@ -26,6 +29,8 @@ modalAberto = false;
   bancos: { nome: string; periodo: string }[] = [];
   modalBancoAberto = false;
 isOrcamento: boolean= false;
+  menuAberto: boolean = false;
+  menuEventogramaAberto: boolean = false;
 
 
 constructor(private route: ActivatedRoute, private router: Router) {
@@ -43,12 +48,48 @@ ngOnInit() {
 
 }
 
-  abrirModal() {
-    this.modalAberto = true;
+  abrirMenu(): void {
+    this.menuAberto = true;
   }
 
-  fecharModal() {
+
+  fecharMenu(): void {
+    this.menuAberto = false;
+  }
+
+
+  importarOrcamento(): void {
+    console.log('Importando orçamento...');
+
+    this.fecharMenu();
+  }
+
+  exportarParaTransfereGov() {
+    if (!this.anoProposta || !this.numeroMeta || !this.numeroSubmeta) {
+      alert('Por favor, preencha todos os campos antes de exportar.');
+      return;
+    }
+
+    console.log('Exportando com os dados:', {
+      anoProposta: this.anoProposta,
+      numeroMeta: this.numeroMeta,
+      numeroSubmeta: this.numeroSubmeta
+    });
+
+}
+
+  abrirModal(): void {
+    this.modalAberto = true;
+    this.fecharMenu();
+  }
+
+  fecharModal(): void {
     this.modalAberto = false;
+  }
+
+  confirmarExportacao(): void {
+    console.log('Exportação confirmada!');
+    this.fecharModal();
   }
 
   abrirModalBanco() {
