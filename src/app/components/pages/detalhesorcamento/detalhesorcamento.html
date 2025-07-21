@@ -1,15 +1,15 @@
-<app-topbar-detalhesorcamento></app-topbar-detalhesorcamento>
+<app-topbar-detalhesorcamento
+  [orcamento]="orcamento"
+  (encargosAlterados)="recalcularEncargos($event)">
+</app-topbar-detalhesorcamento>
 <app-sidebar></app-sidebar>
 
-<!-- Cabeçalho do orçamento -->
+
 <div class="cabecalho-orcamento">
   <h2>Detalhes: {{ orcamento?.nome }}</h2>
   <button (click)="iniciarAdicionarEtapa()">+ Etapa</button>
 </div>
 
-
-
-<!-- Tabela de Itens do Orçamento -->
 <table *ngIf="orcamento && orcamento.itens?.length" class="tabela-itens">
   <thead>
   <tr>
@@ -19,84 +19,83 @@
   </tr>
   </thead>
   <tbody>
+  <ng-container *ngFor="let i of itensOrdenados">
+    <!-- Linha principal do item -->
+    <tr (click)="onSelectItem(i)">
+      <td>{{ i.nivel }}</td>
+      <td>{{ i.codigo }}</td>
+      <td>{{ i.tipo }}</td>
+      <td>{{ i.descricao }}</td>
+      <td>{{ i.unidade }}</td>
+      <td>{{ i.quantidade }}</td>
+      <td>{{ i.precoUnitario | currency }}</td>
+      <td>{{ i.valorComBdi | currency }}</td>
+      <td>{{ i.total | currency }}</td>
+      <td>
+        <button (click)="excluir(i.id); $event.stopPropagation()">🗑️</button>
+        <button *ngIf="i.tipo === 'etapa' || i.tipo === 'subetapa'"
+                (click)="iniciarNovaEtapa(); $event.stopPropagation()">✏️</button>
+      </td>
+    </tr>
 
-  <!-- Linha de edição de item -->
-  <tr *ngIf="editandoItem" class="linha-edicao">
-    <td><input type="number" [(ngModel)]="editandoItem.item.nivel" placeholder="Nível" /></td>
+    <!-- Linha com botões de ação (logo após o item selecionado) -->
+    <tr *ngIf="selectedItem?.nivel === i.nivel" class="acoes-item-selecionado">
+      <td colspan="10">
+        <button (click)="iniciarAdicionarEtapa()">+ Etapa</button>
+        <button (click)="iniciarNovaSubetapa(selectedItem!)">+ Subetapa</button>
+        <button (click)="iniciarAdicionar('composicao', selectedItem)">+ Composição</button>
+        <button (click)="iniciarAdicionar('insumo', selectedItem)">+ Insumo</button>
+      </td>
+    </tr>
 
-    <!-- Campo de código -->
-    <td>
-      <input [(ngModel)]="editandoItem.buscaCodigo" placeholder="Código"
-             (ngModelChange)="onBuscarRealTime()" />
-    </td>
+    <!-- Linha de edição (inserida abaixo do último filho direto ou abaixo do pai se não há filhos) -->
+    <tr *ngIf="editandoItem && selectedItem && isUltimoFilhoDireto(i)" class="linha-edicao">
+      <td><input type="text" [(ngModel)]="editandoItem.item.nivel" placeholder="Nível" /></td>
 
-    <!-- Tipo -->
-    <td>{{ editandoItem.tipo }}</td>
+      <td>
+        <input [(ngModel)]="editandoItem.buscaCodigo" placeholder="Código"
+               (ngModelChange)="onBuscarRealTime()" />
+      </td>
 
-    <!-- Campo de descrição -->
-    <td>
-      <input [(ngModel)]="editandoItem.buscaDescricao" placeholder="Descrição"
-             (ngModelChange)="onBuscarRealTime()" />
+      <td>{{ editandoItem.tipo }}</td>
 
-      <!-- Resultados da busca -->
-      <div *ngIf="editandoItem.resultados?.length" class="resultados-busca">
-        <ul>
-          <li *ngFor="let r of editandoItem.resultados"
-              (click)="selecionar(r)">
-            {{ r.codigo }} - {{ editandoItem.tipo === 'composicao' ? r.descricao : r.nome }}
-          </li>
-        </ul>
-      </div>
-    </td>
+      <td>
+        <input [(ngModel)]="editandoItem.buscaDescricao" placeholder="Descrição"
+               (ngModelChange)="onBuscarRealTime()" />
+        <div *ngIf="editandoItem.resultados?.length" class="resultados-busca">
+          <ul>
+            <li *ngFor="let r of editandoItem.resultados"
+                (click)="selecionar(r)">
+              {{ r.codigo }} - {{ editandoItem.tipo === 'composicao' ? r.descricao : r.nome }}
+            </li>
+          </ul>
+        </div>
+      </td>
 
-    <!-- Base -->
-    <td>
-      <select [(ngModel)]="editandoItem.item.base">
-        <option *ngFor="let b of orcamento?.bancos" [value]="b.nome + ' ' + b.periodo">
-          {{ b.nome }} {{ b.periodo }}
-        </option>
-      </select>
-    </td>
+      <td>
+        <select [(ngModel)]="editandoItem.item.base">
+          <option *ngFor="let b of orcamento?.bancos" [value]="b.nome + ' ' + b.periodo">
+            {{ b.nome }} {{ b.periodo }}
+          </option>
+        </select>
+      </td>
 
-    <!-- Quantidade -->
-    <td><input type="number" [(ngModel)]="editandoItem.item.quantidade" placeholder="Qtd" /></td>
+      <td><input type="number" [(ngModel)]="editandoItem.item.quantidade" placeholder="Qtd" /></td>
 
-    <!-- Valores -->
-    <td>{{ editandoItem.item.precoUnitario | currency }}</td>
-    <td>{{ (editandoItem.item?.precoUnitario ?? 0) * (1 + (orcamento?.bdi ?? 0)/100) | currency }}</td>
-    <td>{{ ((editandoItem.item?.precoUnitario ?? 0) * (1 + (orcamento?.bdi ?? 0)/100)) * (editandoItem.item?.quantidade ?? 0) | currency }}</td>
+      <td>{{ editandoItem.item.precoUnitario | currency }}</td>
+      <td>{{ (editandoItem.item?.precoUnitario ?? 0) * (1 + (orcamento?.bdi ?? 0)/100) | currency }}</td>
+      <td>{{ ((editandoItem.item?.precoUnitario ?? 0) * (1 + (orcamento?.bdi ?? 0)/100)) * (editandoItem.item?.quantidade ?? 0) | currency }}</td>
 
-    <!-- Ações -->
-    <td>
-      <button (click)="confirmarEdicao()">✏️</button>
-      <button (click)="cancelarEdicao()">🗑️</button>
-    </td>
-  </tr>
-
-  <tr *ngFor="let i of itensOrdenados" (click)="onSelectItem(i)" class="linha-item">
-  <td>{{ i.nivel }}</td><td>{{ i.codigo }}</td><td>{{ i.tipo }}</td><td>{{ i.descricao }}</td>
-    <td>{{ i.unidade }}</td><td>{{ i.quantidade }}</td>
-    <td>{{ i.precoUnitario | currency }}</td><td>{{ i.valorComBdi | currency }}</td>
-    <td>{{ i.total | currency }}</td>
-    <td>
-      <button (click)="excluir(i.id); $event.stopPropagation()">🗑️</button>
-      <button *ngIf="i.tipo === 'etapa' || i.tipo === 'subetapa'"
-              (click)="iniciarNovaEtapa(); $event.stopPropagation()">✏️</button>
-    </td>
-  </tr>
-
-  <!-- Ações adicionais quando item é selecionado -->
-  <tr *ngIf="selectedItem" class="acoes-item-selecionado">
-    <td colspan="10">
-      <button (click)="iniciarAdicionarEtapa()">+ Etapa</button>
-      <button (click)="selectedItem && iniciarNovaSubetapa(selectedItem)">+ Subetapa</button>
-      <button (click)="iniciarAdicionar('composicao', selectedItem)">+ Composição</button>
-      <button (click)="iniciarAdicionar('insumo', selectedItem)">+ Insumo</button>
-    </td>
-  </tr>
+      <td>
+        <button (click)="confirmarEdicao()">✔</button>
+        <button (click)="cancelarEdicao()">✖</button>
+      </td>
+    </tr>
+  </ng-container>
   </tbody>
 </table>
-<!-- Adição de nova etapa -->
+
+<!-- Nova etapa (inserida fora da lista principal) -->
 <table *ngIf="novaEtapa" class="tabela-nova-etapa">
   <tr>
     <td><input type="text" [(ngModel)]="novaEtapa.nivel" placeholder="Nível" /></td>
@@ -109,3 +108,9 @@
     </td>
   </tr>
 </table>
+
+<div class="resumo-totais">
+  <p><strong>Total sem BDI:</strong> {{ orcamento?.totalSemBDI | currency:'BRL' }}</p>
+  <p><strong>Total com BDI:</strong> {{ orcamento?.totalComBDI | currency:'BRL' }}</p>
+  <p><strong>Total final:</strong> {{ orcamento?.totalFinal | currency:'BRL' }}</p>
+</div>

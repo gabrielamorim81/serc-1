@@ -85,6 +85,16 @@ export class Composicoes {
     this.resultados = resultadoFinal;
   }
 
+  periodosDisponiveis = [
+    { valor: '2024-11', label: 'Novembro/2024' },
+    { valor: '2024-12', label: 'Dezembro/2024' },
+    { valor: '2025-01', label: 'Janeiro/2025' },
+    { valor: '2025-02', label: 'Fevereiro/2025' },
+    { valor: '2025-03', label: 'Março/2025' },
+    { valor: '2025-04', label: 'Abril/2025' },
+    { valor: '2025-05', label: 'Maio/2025' }
+  ];
+
   formatarData(data: any): string {
     let dt: Date;
 

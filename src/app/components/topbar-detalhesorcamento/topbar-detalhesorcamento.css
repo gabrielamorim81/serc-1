@@ -17,7 +17,7 @@ i.bx {
   left: 4px;
   height: 120px;
   width: 100%;
-  z-index: 1;
+  z-index: 10;
   background: var(--sidebar-color);
 }
 
@@ -536,3 +536,4 @@ i.bx {
 .menu-eventograma a:hover {
   background-color: #d0d0d0;
 }
+

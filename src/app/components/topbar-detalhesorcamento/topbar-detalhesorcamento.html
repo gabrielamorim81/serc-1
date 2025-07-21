@@ -16,13 +16,21 @@
       </a>
     </div>
   </div>
-  <a (click)="abrirMenu()">
-    <i class='bx bx-wrench'></i>
-  </a>
+  <div class="menu-eventograma-wrapper">
+    <a (click)="menuFerramentasAberto = !menuFerramentasAberto">
+      <i class='bx bx-wrench'></i>
+    </a>
+    <div class="menu-eventograma" *ngIf="menuFerramentasAberto" (click)="$event.stopPropagation()">
+      <a (click)="abrirModalImportar(); menuFerramentasAberto = false">Importar Orçamento</a>
+      <a (click)="abrirModal(); menuFerramentasAberto = false">Exportar Transfere Gov</a>
+    </div>
+  </div>
+
   <a (click)="abrirModalBanco()">
     <i class='bx bx-edit'></i>
   </a>
 </div>
+
 
 <div class="menu-overlay" *ngIf="menuAberto" (click)="fecharMenu()">
   <div class="menu-container" (click)="$event.stopPropagation()">
@@ -33,6 +41,27 @@
     </div>
   </div>
 </div>
+
+<div class="modal-overlay" *ngIf="modalImportarAberto" (click)="fecharModalImportar()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>Importar Orçamento</h2>
+    <form>
+      <div class="form-group">
+        <label for="primeiroItem">Primeiro Item do Orçamento:</label>
+        <input type="text" id="primeiroItem" [(ngModel)]="primeiroItem" name="primeiroItem" />
+      </div>
+      <div class="form-group">
+        <label for="ultimoItem">Último Item do Orçamento:</label>
+        <input type="text" id="ultimoItem" [(ngModel)]="ultimoItem" name="ultimoItem" />
+      </div>
+      <div class="modal-buttons">
+        <button type="button" class="btn-exportar" (click)="confirmarImportacao()">Importar</button>
+        <button type="button" class="btn-cancelar" (click)="fecharModalImportar()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 
 <button class="menu-btn" (click)="abrirModal()">📤 Exportar para o Transfere Gov</button>
 <div class="modal-overlay" *ngIf="modalAberto" (click)="fecharModal()">
@@ -73,19 +102,24 @@
 
       <label>Encargos Sociais:</label>
       <div>
-        <input type="radio" name="encargos" value="desonerado" [(ngModel)]="encargos" /> Desonerado
-        <input type="radio" name="encargos" value="nao-desonerado" [(ngModel)]="encargos" /> Não desonerado
+        <input type="radio" name="encargos" value="desonerado" [(ngModel)]="encargos" (ngModelChange)="onEncargoChange($event)" /> Desonerado
+        <input type="radio" name="encargos" value="nao-desonerado" [(ngModel)]="encargos" (ngModelChange)="onEncargoChange($event)"/> Não desonerado
       </div>
 
       <label>BDI:</label>
       <input type="text" [(ngModel)]="bdi" />
 
       <label>Selecione os bancos e períodos:</label>
-      <div class="banco-periodo">
-        <input type="text" placeholder="Nome do banco" [(ngModel)]="nomeBanco" />
-        <input type="text" placeholder="Período" [(ngModel)]="periodoBanco" />
-        <button (click)="adicionarBanco()">Adicionar Banco</button>
-      </div>
+      <select [(ngModel)]="nomeBanco">
+        <option *ngFor="let banco of bancosDisponiveis" [value]="banco">{{ banco }}</option>
+      </select>
+
+      <select [(ngModel)]="periodoBanco">
+        <option *ngFor="let periodo of periodosDisponiveis" [value]="periodo">{{ periodo }}</option>
+      </select>
+
+      <button (click)="adicionarBanco()">Adicionar Banco</button>
+
 
       <div class="bancos-listados">
         <div *ngFor="let banco of bancos; let i = index" class="banco-item">

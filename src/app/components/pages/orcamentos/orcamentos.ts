@@ -19,7 +19,6 @@ export class Orcamentos implements OnInit{
   pastas: any[] = [];
   orcamentos: any[] = [];
 
-
   constructor(private orcamentoService: OrcamentosService, private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
@@ -24,7 +24,6 @@ export class Loginpage {
 
     this.authService.login(this.username, this.password).subscribe({
       next: (res) => {
-        console.log('🔁 RESPOSTA COMPLETA DO BACKEND:', res);
         this.successMessage = 'Sucesso! Agora você está sendo redirecionado para o dashboard...';
 
         this.authService.setSession(res.token, res.user);

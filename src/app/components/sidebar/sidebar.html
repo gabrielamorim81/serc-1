@@ -21,7 +21,7 @@
       </li>
       <ul class="menu-links">
         <li class="nav-link">
-          <a href="#">
+          <a href="#" [routerLink]="['/dashboard']">
             <i class="bx bx-home-alt icon"></i>
             <span class="text nav-text">Dashboard</span>
           </a>
@@ -29,7 +29,7 @@
         <li class="nav-link">
           <a class="route" [routerLink]="['/orcamentos']">
             <i class="bx bx-book icon"></i>
-            <span class="text nav-text">Orçamentos</span>
+            <span class="text nav-text">Orçamento</span>
           </a>
         </li>
         <li class="nav-link">
@@ -43,11 +43,12 @@
             <i class="bx bx-package icon"></i>
             <span class="text nav-text">Insumos</span>
           </a>
+
         </li>
         <li class="nav-link">
           <a href="#">
             <i class="bx bx-pencil icon"></i>
-            <span class="text nav-text">Cadastrar Orçamentos</span>
+            <span class="text nav-text">Cadastrar Cotações</span>
           </a>
         </li>
         <li class="nav-link">
@@ -58,8 +59,7 @@
         </li>
       </ul>
     </div>
-    <div
-      class="bottom-content">
+    <div class="bottom-content">
       <li class="">
         <a href="#" (click)="logout()">
           <i class="bx bx-log-out icon"></i>
@@ -67,6 +67,7 @@
         </a>
       </li>
     </div>
+
     <li class="mode">
       <div class="moon-sun">
         <i class="bx bx-moon icon moon"></i>
@@ -76,7 +77,7 @@
       <div class="toggle-switch" (click)="toggleDarkMode()">
         <span class="switch"></span>
       </div>
-
+    </li>
   </div>
 </nav>
 </body>

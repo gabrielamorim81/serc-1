@@ -1,21 +1,24 @@
 <app-sidebar></app-sidebar>
 <app-topbar-orcamentos></app-topbar-orcamentos>
 
-<h2 class="titulo-decorado">Pastas / Orçamentos</h2>
-<ul>
-  <li *ngFor="let pasta of pastas">
-    📁 <span (click)="abrirPasta(pasta._id)" style="cursor: pointer;">{{ pasta.nome }}</span>
-    <button (click)="deletarPasta(pasta._id)">Excluir</button>
-  </li>
-</ul>
+<div class="secao-pastas">
+  <h2 class="titulo-decorado">📁 Pastas</h2>
+  <ul>
+    <li *ngFor="let pasta of pastas">
+      📁 <span (click)="abrirPasta(pasta._id)" style="cursor: pointer;">{{ pasta.nome }}</span>
+      <button (click)="deletarPasta(pasta._id)">Excluir</button>
+    </li>
+  </ul>
+</div>
 
 
-<ul>
-  <div class="orcamentos">
+<div class="secao-orcamentos">
+  <h2 class="titulo-decorado">📄 Orçamentos</h2>
+  <ul>
     <li *ngFor="let orcamento of orcamentos">
       📄 <span (click)="abrirOrcamento(orcamento.id)" style="cursor: pointer;">{{ orcamento.nome }}</span>
       <button (click)="deletarOrcamento(orcamento.id)">Excluir</button>
     </li>
-  </div>
-</ul>
+  </ul>
+</div>
 

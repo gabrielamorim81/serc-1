@@ -41,8 +41,4 @@ export class OrcamentosService {
   deletarPasta(pastaId: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/pastas/${pastaId}`);
   }
-
-  adicionarOrcamento(orcamento: {nome: any; bdi: any; encargo: any; bancos: string}) {
-
-  }
 }

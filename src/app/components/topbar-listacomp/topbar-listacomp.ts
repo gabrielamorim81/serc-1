@@ -23,7 +23,7 @@ export class TopbarListacomp {
 
   create(){
     if (this.currentPath.includes('insumos')){
-      this.router.navigate(['/create-insumo'])
+      this.router.navigate(['/create-insumos'])
     }
 
     if (this.currentPath.includes('composicoes')){
@@ -32,14 +32,11 @@ export class TopbarListacomp {
   }
   search() {
       if (this.currentPath.includes('composicoes')) {
-        this.router.navigate(['/searchcomp']);
+        this.router.navigate(['/composicoes']);
       }
 
     if (this.currentPath.includes('insumos')){
-      this.router.navigate(['/searchinsumos'])
+      this.router.navigate(['/insumos'])
     }
-
   }
-
-
 }

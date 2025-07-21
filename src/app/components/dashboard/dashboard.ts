@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
 import { NgClass } from '@angular/common';
-import {Router, RouterLink, RouterOutlet} from '@angular/router';
-import {AuthService} from '../../../services/auth.service';
-import {Sidebar} from '../../sidebar/sidebar';
-import {Orcamentos} from '../orcamentos/orcamentos';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [NgClass, RouterOutlet, RouterLink, Sidebar, Orcamentos],
+  imports: [NgClass],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css'
 })
@@ -30,5 +26,3 @@ export class Dashboard {
     this.isSidebarClosed = !this.isSidebarClosed;
   }
 }
-
-

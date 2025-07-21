@@ -5,14 +5,13 @@ import { InsumosService, Insumo } from '../../../services/insumos';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
-import {Sidebar} from '../../sidebar/sidebar';
-import {TopbarDetalhesorcamento} from '../../topbar-detalhesorcamento/topbar-detalhesorcamento';
-import {TopbarListacomp} from '../../topbar-listacomp/topbar-listacomp';
+import { TopbarListacomp } from '../../topbar-listacomp/topbar-listacomp';
+import { Sidebar } from '../../sidebar/sidebar';
 
 @Component({
   selector: 'app-detalhescomposicao',
   standalone: true,
-  imports: [CommonModule, FormsModule, Sidebar, TopbarDetalhesorcamento, TopbarListacomp],
+  imports: [CommonModule, FormsModule, TopbarListacomp, Sidebar],
   templateUrl: './detalhescomposicao.html',
   styleUrls: ['./detalhescomposicao.css']
 })
@@ -50,12 +49,9 @@ export class Detalhescomposicao implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id')!;
     this.carregarDetalhes();
-    console.log(this.id);
-    console.log(this.carregarDetalhes());
   }
 
   carregarDetalhes() {
-    console.log(this.id);
     this.svc.getDetalhesComposicao(this.id).subscribe(data => {
       this.composicao = data;
       this.composicao.dataCotacao = data.precosCotacao?.[0]?.dataCotacao;

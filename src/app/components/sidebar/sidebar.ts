@@ -11,21 +11,19 @@ import {AuthService} from '../../services/auth.service';
 export class Sidebar implements OnInit{
   isDarkMode = false;
   isSidebarClosed = false;
+
   constructor (private Authservice: AuthService) {}
-  ngOnInit():void{
-    this.checkMedia();
-    window.addEventListener('resize', () => this.checkMedia());
-    this.isDarkMode = true
+
+  ngOnInit(): void {
+    this.isDarkMode = true;
     document.body.classList.add('dark')
   }
+
   logout(){
     this.Authservice.logout();
   }
-  checkMedia(){
-    if (window.matchMedia("(max-width: 768px)").matches){
-      this.isSidebarClosed= true;
-    }
-  }
+
+
   toggleDarkMode() {
     this.isDarkMode = !this.isDarkMode;
 
@@ -37,8 +35,7 @@ export class Sidebar implements OnInit{
   }
 
   toggleSidebar() {
-    this.isSidebarClosed= !this.isSidebarClosed;
+    this.isSidebarClosed = !this.isSidebarClosed;
 
   }
-
 }

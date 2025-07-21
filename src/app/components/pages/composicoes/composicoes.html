@@ -18,7 +18,11 @@
   </select>
 
   <label>Período:</label>
-  <input type="month" [(ngModel)]="periodo" />
+  <select [(ngModel)]="periodo">
+    <option *ngFor="let p of periodosDisponiveis" [value]="p.valor">
+      {{ p.label }}
+    </option>
+  </select>
 
   <button (click)="buscar()">Buscar</button>
 </div>
