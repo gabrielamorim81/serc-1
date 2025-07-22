@@ -74,3 +74,38 @@ ul li button:hover {
   background-color: #dc3545;
   color: white;
 }
+
+.topbar-breadcrumb {
+  background-color: #f8f8f8;
+  margin-top: 150px;
+  margin-left: 300px;
+  padding: 10px 20px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #ddd;
+  max-width: 100%;
+}
+
+.breadcrumb-item a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.breadcrumb-item a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  color: #888;
+}
+
+.breadcrumb-item.active {
+  color: #555;
+  font-weight: bold;
+}
+
