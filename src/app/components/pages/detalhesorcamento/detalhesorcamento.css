@@ -1,5 +1,3 @@
-
-
 .cabecalho-orcamento {
   display: flex;
   justify-content: center;     /* Centraliza horizontalmente */
@@ -86,6 +84,8 @@ li:hover {
 }
 
 
+
+
 @media screen and (max-width: 768px) {
   .espacamento-topo {
     margin-left: 0;
@@ -102,4 +102,3 @@ li:hover {
     padding: 5px 8px;
   }
 }
-

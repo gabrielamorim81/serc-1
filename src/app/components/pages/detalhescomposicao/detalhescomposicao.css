@@ -1,141 +1,102 @@
-/* Base geral */
 :host {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Segoe UI', Roboto, sans-serif;
-  color: #e2e8f0;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-color);
   padding: 2rem;
-  margin-top: 160px;
 }
 
-/* Títulos principais */
-h3 {
-  font-size: 1.75rem;
-  margin-top: 160px;
+h2{
+  color: var(--sidebar-color);
+  position: relative;
+  top: 100px;
+}
+
+h3, h4 {
   color: var(--text-color);
-  border-bottom: 2px solid #334155;
-  padding-bottom: 0.5rem;
-  margin-bottom: 1rem;
   text-align: center;
+}
+
+h3 {
+  font-size: 2rem;
+  border-bottom: 2px solid #cbd5e1;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
 }
 
 h4 {
-  font-size: 1.25rem;
-  color: var(--text-color);
+  font-size: 1.3rem;
   margin-bottom: 1rem;
-  text-align: center;
 }
 
-/* Botões */
 button {
-  background-color: #081951;
+  background-color: var(--sidebar-color);
   color: var(--text-color);
-  padding: 0.6rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  margin: 0.5rem;
+  padding: 0.7rem 1.8rem;
+  border-color: #1f5f8b;
+  border-radius: 6px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 button:hover {
-  background-color: #1e40af;
-  transform: translateY(-2px);
+  background-color: #081951;
+
 }
 
-button:disabled {
-  background-color: #475569;
-  cursor: not-allowed;
+.valores-principais{
+  margin-top: 120px;
+  color: var(--sidebar-color);
 }
 
-/* Formulários */
 .adicionar-form {
   background-color: var(--sidebar-color);
-  border-left: 5px solid rgba(0, 0, 0, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.28);
   padding: 2rem;
-  border-radius: 12px;
-  margin-top: 2rem;
+  border-radius: 10px;
   width: 100%;
   max-width: 600px;
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.25);
 }
 
-/* Campos de entrada */
 label {
   display: block;
-  font-weight: 500;
+  font-weight: 600;
+  color: var(--text-color);
   margin-bottom: 0.5rem;
-  color:var(--text-color);
 }
 
 input {
   width: 100%;
   padding: 0.6rem;
   font-size: 1rem;
-  color: #f8fafc;
-  background-color: var(--text-color);
-  border: 1px solid #475569;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  margin-bottom: 1.2rem;
+  background-color: #f1f5f9;
 }
 
-
-/* Lista de resultados */
-.resultados-lista {
-  width: 100%;
-  max-width: 600px;
-  list-style: none;
-  padding: 0;
-  margin-top: 1.5rem;
-  border-top: 1px solid #334155;
-}
-
-.resultado-item {
-  background-color: #0f172a;
-  padding: 1rem;
-  border-bottom: 1px solid #334155;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.resultado-item:hover {
-  background-color: #1e293b;
-}
-
-/* Item selecionado */
-.selecionado {
-  background-color: #2248ba;
-  color: #f8fafc;
-  padding: 1.5rem;
-  border-radius: 10px;
-  margin-top: 1rem;
-  width: 100%;
-  max-width: 600px;
-  box-shadow: inset 0 0 8px #0ea5e9;
-}
-
-/* Listas */
 ul {
   list-style: none;
   padding: 0;
-  width: 100%;
-  max-width: 600px;
+  width: 30%;
 }
 
 li {
   background-color: var(--sidebar-color);
-  border: 1px solid #475569;
-  padding: 0.8rem;
-  border-radius: 8px;
+  padding: 0.9rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
   margin-bottom: 0.8rem;
+}
+
+
+.selecionado {
+  background-color: var(--sidebar-color);
+  border-left: 4px solid #3b82f6;
+  padding: 1rem;
+  border-radius: 8px;
   color: var(--text-color);
 }
 
-/* Avisos / textos informativos */
-p {
-  color: #94a3b8;
-  font-size: 0.95rem;
-  margin-top: 1rem;
-  text-align: center;
-}

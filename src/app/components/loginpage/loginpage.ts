@@ -26,7 +26,7 @@ export class Loginpage {
       next: (res) => {
         this.successMessage = 'Sucesso! Agora você está sendo redirecionado para o dashboard...';
 
-        this.authService.setSession(res.token, res.user);
+        this.authService.setSession(res.token, res.user());
 
         setTimeout(() => {
           this.router.navigate(['/dashboard']);

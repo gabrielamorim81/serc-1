@@ -75,37 +75,52 @@ ul li button:hover {
   color: white;
 }
 
-.topbar-breadcrumb {
-  background-color: #f8f8f8;
-  margin-top: 150px;
-  margin-left: 300px;
-  padding: 10px 20px;
+.breadcrumb {
+  margin-top: 145px;
+  margin-left: 320px;
+  padding: 10px 10px;
+  background-color: rgba(244, 244, 244, 0.96); /* ou a cor da topbar */
   font-family: Arial, sans-serif;
-  font-size: 14px;
-  color: #333;
+}
+
+.breadcrumb ul {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  border-bottom: 1px solid #ddd;
-  max-width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.breadcrumb-item a {
-  color: #007bff;
-  text-decoration: none;
-  font-weight: 500;
+.breadcrumb-item {
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-.breadcrumb-item a:hover {
-  text-decoration: underline;
+
+.breadcrumb-item span {
+  color: #fff; /* ou var(--text-color) */
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.breadcrumb-item.active span {
+  font-weight: bold;
+  cursor: default;
 }
 
 .breadcrumb-separator {
-  color: #888;
+  margin: 0 6px;
+  color: #ccc;
 }
 
-.breadcrumb-item.active {
-  color: #555;
-  font-weight: bold;
-}
+
+
+
+
+
+
+
 

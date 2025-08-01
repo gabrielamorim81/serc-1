@@ -16,6 +16,10 @@
     <label>Unidade de Medida:</label>
     <input formControlName="unidadeMedida" />
   </div>
+  <div>
+    <label>Data de Cotação:</label>
+    <input type="date" formControlName="dataCotacao" />
+  </div>
   <button type="submit" [disabled]="composicaoForm.invalid">Salvar</button>
 
   <div *ngIf="sucesso">✅ Composição salva com sucesso!</div>

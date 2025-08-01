@@ -12,6 +12,7 @@ import {Detalhescomposicao} from './components/pages/detalhescomposicao/detalhes
 import {Eventograma} from './services/eventograma';
 import {EventogramaComponent} from './components/pages/eventograma/eventograma';
 import {Criarcotacao} from './components/pages/criarcotacao/criarcotacao';
+import {Relatorios} from './components/pages/relatorios/relatorios';
 
 export const routes: Routes = [
   {
@@ -27,6 +28,11 @@ export const routes: Routes = [
   {
     path: 'criarcotacao',
     component: Criarcotacao,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'relatorios',
+    component: Relatorios,
     canActivate: [authGuard]
   },
 

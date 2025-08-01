@@ -18,6 +18,8 @@ import {CommonModule} from '@angular/common';
   styleUrl: './insumos.css'
 })
 export class Insumos {
+  mesSelecionado = '01';
+  anoSelecionado = '2025';
   query = '';
   searchBy = 'codigo';
   tipo = 'SINAPI';
@@ -32,8 +34,8 @@ export class Insumos {
       return;
     }
 
-    const periodoFormatado = this.periodo
-    ;
+    const periodoFormatado = `${this.mesSelecionado}-${this.anoSelecionado}`;
+
 
     if (this.searchBy === 'codigo') {
       this.insumosService.buscarPorCodigo(this.query, this.tipo, periodoFormatado).subscribe(data => {
@@ -82,16 +84,6 @@ export class Insumos {
 
     this.resultados = resultadoFinal;
   }
-
-  periodosDisponiveis = [
-    { valor: '2024-11', label: 'Novembro/2024' },
-    { valor: '2024-12', label: 'Dezembro/2024' },
-    { valor: '2025-01', label: 'Janeiro/2025' },
-    { valor: '2025-02', label: 'Fevereiro/2025' },
-    { valor: '2025-03', label: 'Março/2025' },
-    { valor: '2025-04', label: 'Abril/2025' },
-    { valor: '2025-05', label: 'Maio/2025' }
-  ];
 
   formatarData(data: any): string {
     let dt: Date;
