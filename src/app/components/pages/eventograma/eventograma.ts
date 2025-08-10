@@ -99,19 +99,22 @@ export class EventogramaComponent implements OnInit {
     });
   }
 
-
   private calculate(o: OrcamentoDetalhes): OrcamentoDetalhes {
     const bdiPercent = o.bdi ?? 0;
+    const usarDesonerado = o.encargosSociais === 'desonerado';
 
     o.itens = o.itens.map(i => {
-      const preco = i.precoUnitario ?? 0;
-      const quantidade = i.quantidade ?? 0;
+      const precoUnitario = usarDesonerado
+        ? i.precoDesonerado ?? i.precoUnitario ?? 0
+        : i.precoNaoDesonerado ?? i.precoUnitario ?? 0;
 
-      const valorComBdi = preco + (preco * bdiPercent / 100);
+      const quantidade = i.quantidade ?? 0;
+      const valorComBdi = precoUnitario + (precoUnitario * bdiPercent / 100);
       const total = valorComBdi * quantidade;
 
       return {
         ...i,
+        precoUnitario,
         valorComBdi,
         total
       };
@@ -123,7 +126,6 @@ export class EventogramaComponent implements OnInit {
 
     for (let item of itensOrdenados) {
       const itemNivel = item.nivel.toString();
-
       const parentPath = itemNivel.split('.').slice(0, -1).join('.');
       if (!parentPath) continue;
 
@@ -136,7 +138,6 @@ export class EventogramaComponent implements OnInit {
     o.itens = o.itens.sort((a, b) => {
       const aNivel = a.nivel.toString().split('.').map(Number);
       const bNivel = b.nivel.toString().split('.').map(Number);
-
       for (let i = 0; i < Math.max(aNivel.length, bNivel.length); i++) {
         const aVal = aNivel[i] ?? 0;
         const bVal = bNivel[i] ?? 0;

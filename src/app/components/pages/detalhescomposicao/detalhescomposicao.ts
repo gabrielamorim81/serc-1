@@ -201,7 +201,7 @@ export class Detalhescomposicao implements OnInit {
     const descricao = this.editando.buscaDescricao?.trim();
     const data = new Date(this.composicao?.dataCotacao);
     const banco = this.composicao?.banco || 'SINAPI';
-    const periodo = this.formatPeriodoSearch(data);
+    const periodo = this.formatPeriodo(data);
 
     let obs$: Observable<any[]>;
 
@@ -279,11 +279,6 @@ export class Detalhescomposicao implements OnInit {
   }
   private formatPeriodoComp(date: Date): string {
     const mm = String(date.getMonth() + 1).padStart(2, '0');
-    const yyyy = date.getFullYear();
-    return `${mm}-${yyyy}`;
-  }
-  private formatPeriodoSearch(date: Date): string{
-    const mm = String(date.getMonth() + 2).padStart(2, '0');
     const yyyy = date.getFullYear();
     return `${mm}-${yyyy}`;
   }

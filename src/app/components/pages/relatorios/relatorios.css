@@ -3,17 +3,18 @@ body {
   background-color: var(--sidebar-color);
   margin: 0;
   padding: 40px;
-
+  color: var(--text-color);
 }
 
 .relatorio-container {
   background: var(--sidebar-color);
+  color: var(--text-color);
   padding: 30px 40px;
   max-width: 700px;
   margin-top: 150px;
   margin-left: 600px;
   border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .relatorio-container h1 {
@@ -25,7 +26,7 @@ body {
 .filtro-relatorio h2 {
   margin-bottom: 20px;
   color: var(--text-color);
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #555;
   padding-bottom: 10px;
 }
 
@@ -45,8 +46,13 @@ body {
 .campo select {
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #555;
   font-size: 14px;
+  color: #081951;
+}
+
+.campo input::placeholder {
+  color: #aaa;
 }
 
 .checkbox-list {
@@ -58,6 +64,7 @@ body {
 
 .checkbox-list label {
   font-weight: normal;
+  color: var(--text-color);
 }
 
 .botoes {
@@ -91,4 +98,42 @@ button {
 
 .btn-limpar:hover {
   background-color: #c82333;
+}
+
+.btn-buscar {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-buscar:hover {
+  background-color: #0069d9;
+}
+
+.resultado-relatorio table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.resultado-relatorio th,
+.resultado-relatorio td {
+  padding: 10px;
+  border: 1px solid #555;
+  text-align: left;
+  color: var(--text-color);
+}
+
+
+
+.insumos-selecionados ul {
+  list-style: none;
+  padding: 0;
+}
+
+.insumos-selecionados li {
+  margin: 8px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-color);
 }

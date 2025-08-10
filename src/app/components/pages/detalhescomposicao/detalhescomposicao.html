@@ -13,7 +13,7 @@
 <button *ngIf="isProprio" (click)="iniciarAdicionar('insumo')">Adicionar Insumo</button>
 <ul *ngIf="insumos.length > 0; else semInsumos">
   <li *ngFor="let insumo of insumos">
-    <div class="card">
+    <div>
       <strong>Código:</strong> {{ insumo.codigo }}<br />
       <strong>Coeficiente:</strong> {{ insumo.coeficiente }}<br />
       <strong>Preço Unitário Desonerado:</strong> {{ insumo.precoDesonerado | number: '1.4-4' }}<br />
@@ -33,7 +33,7 @@
 <button *ngIf="isProprio" (click)="iniciarAdicionar('composicao')">Adicionar Composição Auxiliar</button>
 <ul *ngIf="composicoesAuxiliares.length > 0; else semCompsAux">
   <li *ngFor="let compAux of composicoesAuxiliares">
-    <div class="card">
+    <div>
       <strong>Código:</strong> {{ compAux.codigo }}<br />
       <strong>Coeficiente:</strong> {{ compAux.coeficiente }}<br />
       <strong>Preço Unitário Desonerado:</strong> {{ compAux.precoDesonerado | number: '1.4-4' }}<br />

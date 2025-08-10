@@ -7,6 +7,12 @@ export interface PrecoCotacao {
   dataCotacao: string;
   precoDesonerado: number;
   precoNaoDesonerado: number;
+  empresa: string;
+  telefone: string;
+  cnpj: string;
+  vendedor: string;
+  arquivoNome?: string;
+  arquivoCaminho?: string;
 }
 
 export interface Insumo {
@@ -36,11 +42,6 @@ export class InsumosService {
     return this.http.get<Insumo[]>(`${this.baseUrl}/insumos/buscar-por-nome/${nome}/${tipo}`, { params });
   }
 
-  buscarPorNomeCot(nome: string, tipo: string ): Observable<Insumo[]> {
-
-    return this.http.get<Insumo[]>(`${this.baseUrl}/insumos/buscar-por-nome/${nome}/${tipo}`, {});
-  }
-
   salvarInsumo(data: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/insumos/salvar`, data);
   }
@@ -51,6 +52,27 @@ export class InsumosService {
     });
   }
 
+  buscarProprioPorCodigo(codigo: string, tipo: string, empresa: string): Observable<Insumo[]> {
+    const params = new HttpParams()
+      .set('codigo', codigo)
+      .set('tipo', tipo)
+      .set('empresa', empresa);
+
+    return this.http.get<Insumo[]>(`${this.baseUrl}/insumos/buscar-por-codigo-empresa`, { params });
+  }
+
+  buscarProprioPorNome(nome: string, tipo: string, empresa: string): Observable<Insumo[]> {
+    const params = new HttpParams()
+      .set('nome', nome)
+      .set('tipo', tipo)
+      .set('empresa', empresa);
+
+    return this.http.get<Insumo[]>(`${this.baseUrl}/insumos/buscar-por-nome-empresa`, { params });
+  }
+
+  salvarCotacao(formData: FormData): Observable<any> {
+    return this.http.post(`${this.baseUrl}/cotacoes`, formData);
+  }
 
   buscarTodos(): Observable<Insumo[]> {
     return this.http.get<Insumo[]>(`${this.baseUrl}/insumos/todos`);
